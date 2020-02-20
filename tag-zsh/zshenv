@@ -1,0 +1,24 @@
+# Editor envrioment variables
+export EDITOR="emacs"
+export VISUAL="$EDITOR"
+
+# TERM
+export TERM='xterm-256color'
+
+# Create alias for 'xdg-open'
+alias open='xdg-open'
+
+# Colorize dmesg
+alias dmesg="dmesg --color=always"
+
+# Golang
+export GOPATH=~/.go
+
+# LANG
+export LANG=en_US.UTF-8
+
+# bat theme
+export BAT_THEME=ansi-dark
+
+# local binaries
+export PATH=${PATH}:/home/poscat/.local/bin
