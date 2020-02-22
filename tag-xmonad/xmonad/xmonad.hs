@@ -44,7 +44,7 @@ mHooks :: ManageHook
 mHooks = manageDocks
          <+> composeOne [ stringProperty "WM_WINDOW_ROLE" =? "browser"              -?> doShift "browser"
                         , stringProperty "WM_NAME"   =? "Media viewer"              -?> doCenterFloat
-                        , appName =? "telegram-desktop"                             -?> doShift "im"
+                        , className =? "TelegramDesktop"                            -?> doShift "im"
                         , appName =? "xmessage"                                     -?> doCenterFloat
                         , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" -?> floatCenteringWithRatio (2%3) (2%3)
                         , className =? "Vlc"                                        -?> doCenterFloat
