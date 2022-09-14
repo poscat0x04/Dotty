@@ -19,6 +19,11 @@ export PATH="$PATH:$HOME/.local/bin"
 # cabal
 export PATH="$PATH:$HOME/.cabal/bin"
 
+{{ if eq .chezmoi.os "darwin" -}}
+# vscode (macOS)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+{{ end -}}
 # set editors
 export EDITOR="nvim"
 export VISUAL="code"
