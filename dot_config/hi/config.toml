@@ -1,0 +1,7 @@
+email = "poscat@poscat.moe"
+github_username = "poscat0x04"
+name = "poscat"
+vcs = "Git"
+license = "BSD-3-Clause"
+
+[custom]
