@@ -1,0 +1,100 @@
+# setup command line history
+SAVEHIST=10000
+HISTSIZE=10000
+HISTFILE=$HOME/.zsh_history
+
+# zinputrc
+source $HOME/.zinputrc
+
+# options
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushd_silent
+setopt pushd_to_home
+setopt cdable_vars
+setopt multios
+setopt extended_glob
+
+setopt combining_chars
+setopt interactive_comments
+setopt rc_quotes
+
+setopt long_list_jobs
+setopt auto_resume
+setopt notify
+
+setopt complete_in_word
+setopt always_to_end
+setopt path_dirs
+setopt auto_menu
+setopt auto_list
+setopt auto_param_slash
+
+setopt correct
+
+setopt bang_hist
+setopt extended_history
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt hist_verify
+setopt hist_beep
+
+unsetopt clobber
+
+unsetopt mail_warning
+
+unsetopt bg_nice
+unsetopt hup
+unsetopt check_jobs
+
+unsetopt menu_complete
+unsetopt flow_control
+
+# aliases
+alias ack='nocorrect ack'
+alias cd='nocorrect cd'
+alias cp='nocorrect cp'
+alias gcc='nocorrect gcc'
+alias grep='nocorrect grep'
+alias ln='nocorrect ln'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias rm='nocorrect rm'
+alias rg='nocorrect rg'
+alias find='noglob find'
+alias history='noglob history'
+alias locate='noglob locate'
+alias rsync='noglob rsync'
+alias scp='noglob scp'
+alias sftp='noglob sftp'
+alias diffu='diff --unified'
+alias _='sudo'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+alias grep="${aliases[grep]:-grep} --color=auto"
+alias mkdir="${aliases[mkdir]:-mkdir} -p"
+alias rm="${aliases[rm]:-rm} -i"
+alias mv="${aliases[mv]:-mv} -i"
+alias cp="${aliases[cp]:-cp} -i"
+alias ln="${aliases[ln]:-ln} -i"
+alias ls="${aliases[ls]:-ls} --color=auto"
+
+# coreutils (macOS)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+
+# dircolors
+if which dircolors > /dev/null 2>&1; then
+  eval $(dircolors ~/.dir_colors)
+fi
+
+# zle vi mode
+bindkey -v
