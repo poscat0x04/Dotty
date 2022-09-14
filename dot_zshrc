@@ -98,3 +98,26 @@ fi
 
 # zle vi mode
 bindkey -v
+
+# zinit
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source /opt/homebrew/opt/zinit/zinit.zsh
+elif  [[ "$OSTYPE" == "linux"* ]]; then
+  source /usr/share/zinit/zinit.zsh
+fi
+
+# autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e9e9e"
+ZSH_AUTOSUGGEST_STRATEGY=(history)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
+# syntax highlighting
+zinit light zsh-users/zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# history substring search
+zinit light zsh-users/zsh-history-substring-search
+
+# you should use
+zinit light MichaelAquilina/zsh-you-should-use
