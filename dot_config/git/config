@@ -1,0 +1,38 @@
+[alias]
+	amend = "commit --amend --no-edit"
+
+[commit]
+	gpgSign = true
+
+[core]
+	editor = "nvim"
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[gpg]
+	format = "ssh"
+
+[gpg "ssh"]
+	allowedSignersFile = "~/.ssh/allowed_signers"
+
+[init]
+	defaultBranch = "master"
+
+[merge]
+	conflictstyle = "diff3"
+	tool = "nvimdiff"
+
+[mergetool]
+	prompt = false
+
+[pull]
+	ff = true
+
+[user]
+	email = "poscat@poscat.moe"
+	name = "poscat"
+	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcup9tmRiPbk6wDMOlHLVtlluwbhDXvC7hgUaPnHusD"
