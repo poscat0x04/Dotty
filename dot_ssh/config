@@ -1,0 +1,15 @@
+Host arch
+  HostName 10.1.10.201
+
+Host owrt
+  HostName 192.168.1.1
+  User root
+
+Host nixos
+  HostName 10.1.10.1
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  ForwardAgent yes
+  IdentityFile ~/.ssh/id_ed25519
