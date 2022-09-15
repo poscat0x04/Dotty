@@ -125,6 +125,19 @@ fi
 # zle vi mode
 bindkey -v
 
+# completion settings
+source ~/.local/share/zsh-extras/completion.zsh
+
+# terminal detection and configuration
+source ~/.local/share/zsh-extras/terminal.zsh
+
+# load my functions
+fpath=($HOME/.local/share/zsh-extras/functions $fpath)
+autoload -U archive lsarchive unarchive
+
+# enable completion
+autoload -U compinit && compinit -u
+
 # zinit
 if [[ "$OSTYPE" == "darwin"* ]]; then
   source /opt/homebrew/opt/zinit/zinit.zsh
