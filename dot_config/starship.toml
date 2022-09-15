@@ -114,7 +114,7 @@ am = "am"
 am_or_rebase = "am/rebase"
 
 [git_status]
-format = "([$ahead_behind](76) )([$conflicted](red) )([$stashed](76) )([$staged](yellow) )([$modified](yellow) )([$untracked](yellow) )"
+format = "([$ahead_behind](76) )([$conflicted](red) )([$stashed](76) )([$staged](yellow) )([$renamed](cyan) )([$deleted](red) )([$modified](yellow) )([$untracked](yellow) )"
 ahead = "⇡$count"
 behind = "⇣$count"
 conflicted = "~$count"
@@ -123,6 +123,8 @@ stashed = "*$count"
 staged = "+$count"
 modified = "!$count"
 untracked = "?$count"
+deleted = "×$count"
+renamed = "↠$count"
 
 
 [fill]
