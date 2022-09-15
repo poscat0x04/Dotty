@@ -1,0 +1,157 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$fill \
+$status\
+$cmd_duration\
+$username\
+$hostname\
+$time\
+$line_break\
+$jobs\
+$battery\
+$shell\
+$character"""
+
+[character]
+success_symbol = "[❯](76)"
+error_symbol = "[❯](196)"
+vimcmd_symbol = "[❮](76)"
+vimcmd_replace_one_symbol = "[▶](76)"
+vimcmd_replace_symbol = "[▶](76)"
+vimcmd_visual_symbol = "[Ⅴ](76)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+style = "bold 39"
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+only_attached = true
+symbol = ""
+style = "76"
+
+[git_commit]
+commit_hash_length = 8
+format = "@[$hash]($style) "
+style = "76"
+
+[git_state]
+format = '[$state( $progress_current/$progress_total)]($style) '
+style = "red"
+rebase = "rebase"
+merge = "merge"
+revert = "revert"
+cherry_pick = "cherry-pick"
+bisect = "bisect"
+am = "am"
+am_or_rebase = "am/rebase"
+
+[git_status]
+format = "([$ahead_behind](76) )([$conflicted](red) )([$stashed](76) )([$staged](yellow) )([$modified](yellow) )([$untracked](yellow) )"
+ahead = "⇡$count"
+behind = "⇣$count"
+conflicted = "~$count"
+diverged = "⇡$ahead_count⇣behind_count"
+stashed = "*$count"
+staged = "+$count"
+modified = "!$count"
+untracked = "?$count"
+
+
+[fill]
+symbol = "─"
+style = "244"
+
+[status]
+disabled = false
+symbol = "✘"
+format = "[$symbol $status]($style) "
+pipestatus = true
+pipestatus_separator = "|"
+pipestatus_format = "[✘]($style) $pipestatus "
+pipestatus_segment_format = "[$status]($style)"
+
+[username]
+style_user = "180"
+style_root = "bold yellow"
+format = "as [$user]($style) "
+
+[hostname]
+ssh_symbol = ""
+style = "180"
+format = "on [$hostname]($style) "
+
+[cmd_duration]
+style = "101"
+
+[time]
+disabled = false
+use_12hr = true
+style = "66"

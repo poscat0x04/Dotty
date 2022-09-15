@@ -121,3 +121,6 @@ zinit light zsh-users/zsh-history-substring-search
 
 # you should use
 zinit light MichaelAquilina/zsh-you-should-use
+
+# starship
+eval "$(starship init zsh)"
