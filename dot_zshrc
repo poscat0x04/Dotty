@@ -119,7 +119,7 @@ fi
 
 # dircolors
 if which dircolors > /dev/null 2>&1; then
-  eval $(dircolors ~/.dir_colors)
+  eval $(dircolors ~/.config/dir_colors)
 fi
 
 # zle vi mode
