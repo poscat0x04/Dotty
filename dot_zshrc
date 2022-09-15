@@ -85,6 +85,32 @@ alias cp="${aliases[cp]:-cp} -i"
 alias ln="${aliases[ln]:-ln} -i"
 alias ls="${aliases[ls]:-ls} --color=auto"
 
+alias cb='cabal build --ghc-options='\''-Wall -fno-warn-unused-do-bind'\'''
+alias ct='cabal new-test --test-show-details=streaming --disable-documentation'
+alias df='df -kh'
+alias du='du -kh'
+alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+alias history-stat='history 0 | awk '\''{print $2}'\'' | sort | uniq -c | sort -n -r | head'
+alias l='ls -1A'
+alias la='ll -A'
+alias lc='ll -c'
+alias lk='ll -Sr'
+alias ll='ls -lh'
+alias lm='la | less -R'
+alias lr='ll -R'
+alias lt='ll -tr'
+alias lu='lt -u'
+alias lx='ll -XB'
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias o='open'
+else
+  alias o='xdg-open'
+fi
+alias pb='curl -F '\''c=@-'\'' '\''https://fars.ee/'\'''
+alias sl='ls'
+
+
 # coreutils (macOS)
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
