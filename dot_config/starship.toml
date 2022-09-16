@@ -3,11 +3,10 @@
 add_newline = false
 
 format = """
-$localip\
-$shlvl\
 $singularity\
 $kubernetes\
 $directory\
+$shlvl\
 $vcsh\
 $git_branch\
 $git_commit\
@@ -57,12 +56,10 @@ $buf\
 $nix_shell\
 $conda\
 $spack\
-$memory_usage\
 $aws\
 $gcloud\
 $openstack\
 $azure\
-$env_var\
 $crystal\
 $custom\
 $sudo\
@@ -74,9 +71,9 @@ $hostname\
 $time\
 $line_break\
 $jobs\
-$battery\
 $shell\
-$character"""
+$character\
+"""
 
 [character]
 success_symbol = "[❯](76)"
@@ -91,6 +88,10 @@ truncation_length = 3
 truncate_to_repo = false
 style = "bold 39"
 fish_style_pwd_dir_length = 1
+
+[shlvl]
+symbol = "↓"
+disabled = false
 
 [git_branch]
 only_attached = true
