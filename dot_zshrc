@@ -145,6 +145,9 @@ elif  [[ "$OSTYPE" == "linux"* ]]; then
   source /usr/share/zinit/zinit.zsh
 fi
 
+# opam
+[[ ! -r /home/poscat/.local/share/opam/opam-init/init.zsh ]] || source /home/poscat/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 # autosuggestions
 zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e9e9e"

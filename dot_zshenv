@@ -19,6 +19,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # cabal
 export PATH="$PATH:$HOME/.cabal/bin"
 
+# ocaml
+export OPAMROOT="$HOME/.local/share/opam"
+
 # set editors
 export EDITOR="nvim"
 export VISUAL="code"
