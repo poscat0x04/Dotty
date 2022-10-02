@@ -22,3 +22,6 @@ export PATH="$PATH:$HOME/.cabal/bin"
 # set editors
 export EDITOR="nvim"
 export VISUAL="code"
+
+# personal tex packages
+export TEXINPUTS=".:$HOME/.local/share/tex//:"
