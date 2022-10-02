@@ -1,0 +1,17 @@
+% yanked from the latest release of iftex since the bundled iftex is out-of-date
+\def\IFTEX@let#1#2{%
+  \expandafter\let\csname if#1\expandafter\endcsname
+  \csname if#2\endcsname}
+
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname TexpadTeXMode\endcsname\relax
+  \IFTEX@let{texpadtex}{false}
+\else
+  \IFTEX@let{texpadtex}{true}
+  \ifcase\TexpadTeXMode\relax
+    % This is 8 bit mode
+  \or
+    \IFTEX@let{tutex}{true}
+  \fi
+\fi
+\IFTEX@let{TexpadTeX}{texpadtex}
