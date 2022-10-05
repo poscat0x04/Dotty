@@ -1,4 +1,4 @@
-% A latex package for (mathematical) note taking
+% A latex macro set for (mathematical) note taking
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{noted}
 
@@ -16,6 +16,7 @@
 \DeclareStringOption[]{title}
 \DeclareBoolOption{intolerance}
 \DeclareBoolOption{consolas}
+\DeclareBoolOption{nomacro}
 \ProcessKeyvalOptions*
 
 % -------- Title and author ----------
@@ -111,7 +112,7 @@
 \fancyhfoffset[RO]{.18\paperwidth}
 
 % ---------- Title page ---------------
-\let\oldmktitle\maketitle
+\let\oldmktitle\maketitle % TODO: switch to NewCommandCopy when texpad supports it
 \renewcommand\maketitle{
   \begin{titlepage}
   \newgeometry{%
@@ -188,3 +189,9 @@
 
 % ---------- Colored boxes ------------
 \RequirePackage[many]{tcolorbox}
+
+% ---------- Load Macros --------------
+\ifnoted@nomacro
+\else
+  \RequirePackage{noted-macro}
+\fi

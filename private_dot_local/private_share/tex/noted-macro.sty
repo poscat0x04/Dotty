@@ -1,0 +1,79 @@
+% A package providing macros for commonly used mathematical notations.
+% Intended to be used together with the noted package but should work fine
+% without it.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noted-macro}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{graphicx}
+
+% --------- Number systems ----------
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\F{\mathbb{F}}
+
+% ---------- Order theory -----------
+\renewcommand\le{\leqslant}
+\renewcommand\ge{\geqslant}
+\newcommand\CoveredBy{\sqsubset}
+\newcommand\Coveres{\sqsupset}
+\newcommand\JOIN{\bigvee}
+\newcommand\MEET{\bigwedge}
+\DeclareMathOperator\Down{\downarrow}
+\DeclareMathOperator\Downset{\mathcal{O}}
+\DeclareMathOperator\Downmap{\phi_{\downarrow}}
+\DeclareMathOperator\Up{\uparrow}
+\DeclareMathOperator\Upset{\mathcal{U}}
+\DeclareMathOperator\Upmap{\phi_{\uparrow}}
+\DeclareMathOperator\Seg{seg}
+\DeclareMathOperator\Succ{succ}
+
+% ---------- Set theory -------------
+\newcommand\Empty{\varnothing}
+\newcommand\ISO{\cong}
+\DeclareMathOperator\Fst{\pi_1}
+\DeclareMathOperator\Snd{\pi_2}
+\newcommand\fst{\pi_1}
+\newcommand\snd{\pi_2}
+\DeclareMathOperator\Dom{dom}
+\DeclareMathOperator\Img{im}
+\DeclareMathOperator\Pwrset{\mathcal{P}}
+\newcommand\Inj{\hookrightarrow}
+\newcommand\Surj{\twoheadrightarrow}
+\newcommand\Bij{\leftrightarrow}
+\DeclarePairedDelimiter\Card{\lvert}{\rvert}
+
+% ----------- Algebra ---------------
+\DeclarePairedDelimiter\Abs{\lvert}{\rvert}
+\newcommand\Mul{\cdot}
+
+% ------------ Logic ----------------
+% Quantifiers
+\newcommand\Forall[1]{\forall\mkern2mu #1 \ldotp}
+\newcommand\Exists[1]{\exists\mkern2mu #1 \ldotp}
+\newcommand\ExistU[1]{\exists!\mkern2mu #1 \ldotp}
+% Operators
+\newcommand\NOT{\neg}
+\newcommand\Necessary{\mathord{\Box}}
+\newcommand\Possible{\mathord{\Diamond}}
+% Connectives
+\newcommand\AND{\,\land\,}
+\newcommand\OR{\,\lor\,}
+\newcommand\IMPL{\implies}
+\newcommand\IMPLIES{\implies}
+\newcommand\IF{\impliedby}
+\newcommand\IMPLIEDBY{\impliedby}
+\newcommand\IFF{\iff}
+\newcommand\DEF{\coloneqq}
+\newcommand\LIMPL{\multimap}
+\newcommand\PAR{\,\rotatebox[origin=c]{180}{\&}\,}
+\newcommand\WITH{\,\&\,}
+\newcommand\TIMES{\otimes}
+\newcommand\PLUS{\oplus}
+% Constants
+\newcommand\BOT{\bot}
+\newcommand\TOP{\top}
