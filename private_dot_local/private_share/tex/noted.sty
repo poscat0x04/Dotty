@@ -1,0 +1,190 @@
+% A latex package for (mathematical) note taking
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noted}
+
+% -------- Engine detection ----------
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+\RequirePackage{iftexpadtex}
+\RequirePackage{etoolbox}
+
+% -------- Options parsing -----------
+\RequirePackage{kvoptions}
+
+\DeclareStringOption[]{name}
+\DeclareStringOption[]{email}
+\DeclareStringOption[]{title}
+\DeclareBoolOption{intolerance}
+\DeclareBoolOption{consolas}
+\ProcessKeyvalOptions*
+
+% -------- Title and author ----------
+\providecommand\titlename{\noted@title}
+\providecommand\authorname{\noted@name}
+
+\title{\titlename}
+\ifdefempty{\noted@email}{
+  \author{\authorname}
+}{
+  \author{%
+    \authorname \\
+    \href{mailto:\noted@email}{\texttt{\noted@email}}}
+}
+
+% ------------ Math input -------------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+
+% -------- Theorems and proofs --------
+\RequirePackage{amsthm}
+
+% --------- Better colors -------------
+\RequirePackage[dvipsnames]{xcolor}
+
+% -------- Header and footer ----------
+\RequirePackage{fancyhdr}
+
+% ----------- Indices -----------------
+\RequirePackage[quiet]{imakeidx} % TODO: switch to xindy when texpad adds support for it
+\indexsetup{firstpagestyle=fancy}
+\makeindex[title=Index,intoc=true]
+\newcommand\idx[1]{#1\index{#1}}
+
+% ----- Hyperlinks & PDF metadata -----
+\RequirePackage[%
+  draft=false,
+  ocgcolorlinks
+]{hyperref}
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=BrickRed,
+  linkbordercolor=BrickRed,
+  citecolor=Green,
+  citebordercolor=Green,
+  filecolor=Mulberry,
+  filebordercolor=Mulberry,
+  urlcolor=NavyBlue,
+  urlbordercolor=NavyBlue,
+  menucolor=BrickRed,
+  menubordercolor=BrickRed,
+  runcolor=Mulberry,
+  runbordercolor=Mulberry,
+  CJKbookmarks=true,
+  bookmarksnumbered=true,
+  % https://tex.stackexchange.com/questions/3450/make-pdf-open-in-fill-window-mode-with-hyperref
+  pdfstartview=,
+  pdftitle={\titlename},
+  pdfauthor={\authorname},
+  pdfpagemode=FullScreen
+}
+
+% --------- Better marginpar ----------
+\RequirePackage{marginnote}
+
+% --------- Better listings -----------
+\RequirePackage{enumitem}
+
+% ---- Prettier sets and bra-kets -----
+\RequirePackage{braket}
+
+% --------- ISO 8601 date -------------
+\RequirePackage[style=iso]{datetime2}
+
+% --------- Page geometry -------------
+\RequirePackage[%
+  paperheight=297mm,
+  paperwidth=223mm,
+  left = 0.1\paperwidth,
+  bottom = 0.118\paperheight,
+  top = 0.118\paperheight,
+  right = 0.269\paperwidth,
+  footskip = 0.04\paperwidth,
+  marginparwidth = 0.202\paperwidth,
+  marginparsep = 0.02\paperwidth
+]{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\fancyhead[CO]{\titlename}
+\fancyhfoffset[RO]{.18\paperwidth}
+
+% ---------- Title page ---------------
+\let\oldmktitle\maketitle
+\renewcommand\maketitle{
+  \begin{titlepage}
+  \newgeometry{%
+    margin=.11\paperwidth,
+    bottom=0.118\paperheight
+  }
+  \oldmktitle
+  \tableofcontents
+  \restoregeometry
+  \end{titlepage}
+}
+
+% ------------ Fonts ------------------
+\RequirePackage{fontspec}
+
+%% roman and sans-serif font
+\setmainfont{Linux Libertine}
+\setsansfont{Linux Biolinum}
+
+%% monospaced font
+\ifnoted@consolas
+\setmonofont[Scale=0.95]{Consolas}
+\else
+\setmonofont[Scale=0.92]{Sarasa Mono SC}
+\fi
+
+%% normal math font (symbol + text)
+\RequirePackage[libertine]{newtxmath} % TODO: consider supporting STIX Two Math when texpad adds support for unicode-math
+
+%% math font variations
+%%
+%% mathbb: AMS
+%% mathcal: cmsy (Computer Modern Math Symbols)
+%% mathfrak: Euler fraktur
+%% mathscr: Ralph Smith's Formal Script
+\RequirePackage[%
+  bb=ams,
+  cal=cm,
+  frak=euler,
+  scr=rsfs
+]{mathalfa}
+
+% ---------- Chinese input ------------
+\ifxetex
+  \RequirePackage{xeCJK}
+
+  \setCJKmainfont[ItalicFont={KaiTi SC}]{Songti SC}
+  \setCJKsansfont{PingFang SC}
+  \setCJKmonofont{Sarasa Mono SC}
+  \newCJKfontfamily[song]\songti{Songti SC}
+  \newCJKfontfamily[kai]\kaiti{KaiTi SC}
+  \newCJKfontfamily[hei]\heiti{PingFang SC}
+\else\ifluatex
+  \RequirePackage{luatexja}
+  \RequirePackage{luatexja-fontspec}
+
+  \setmainjfont{Songti SC}
+  \setsansjfont{PingFang SC}
+  \setmonojfont{Sarasa Mono SC}
+\fi\fi
+
+% ----------- microtype ---------------
+\RequirePackage[%
+  activate={true,noncompatibility},
+  tracking=true,
+  spacing=true
+]{microtype}
+
+% --------- Supress warnings ----------
+\ifnoted@intolerance
+\else
+  \hbadness=10000
+\fi
+
+% ---------- Colored boxes ------------
+\RequirePackage[many]{tcolorbox}
