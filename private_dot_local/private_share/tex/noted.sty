@@ -3,9 +3,7 @@
 \ProvidesPackage{noted}
 
 % -------- Engine detection ----------
-\RequirePackage{ifxetex}
-\RequirePackage{ifluatex}
-\RequirePackage{iftexpadtex}
+\RequirePackage{iftex}
 \RequirePackage{etoolbox}
 
 % -------- Options parsing -----------
@@ -123,17 +121,19 @@
 }
 
 % ------------ Fonts ------------------
-\RequirePackage{fontspec}
-
-%% roman and sans-serif font
-\setmainfont{Linux Libertine}
-\setsansfont{Linux Biolinum}
-
-%% monospaced font
-\ifnoted@consolas
-\setmonofont[Scale=0.95]{Consolas}
+\ifPDFTeX
+  \usepackage{libertineRoman}
+  \usepackage{biolinum}
+  \usepackage{noto-mono}
 \else
-\setmonofont[Scale=0.92]{Sarasa Mono SC}
+  \RequirePackage{fontspec}
+
+  %% roman and sans-serif font
+  \setmainfont{Linux Libertine}
+  \setsansfont{Linux Biolinum}
+
+  %% monospaced font
+  \setmonofont[Scale=0.92]{Sarasa Mono SC}
 \fi
 
 %% normal math font (symbol + text)
@@ -153,7 +153,7 @@
 ]{mathalfa}
 
 % ---------- Chinese input ------------
-\ifxetex
+\ifXeTeX
   \RequirePackage{xeCJK}
 
   \setCJKmainfont[ItalicFont={KaiTi SC}]{Songti SC}
@@ -162,7 +162,7 @@
   \newCJKfontfamily[song]\songti{Songti SC}
   \newCJKfontfamily[kai]\kaiti{KaiTi SC}
   \newCJKfontfamily[hei]\heiti{PingFang SC}
-\else\ifluatex
+\else\ifLuaTeX
   \RequirePackage{luatexja}
   \RequirePackage{luatexja-fontspec}
 
