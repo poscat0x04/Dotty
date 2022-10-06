@@ -8,6 +8,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
 \RequirePackage{graphicx}
+\RequirePackage{etoolbox}
 
 % --------- Number systems ----------
 \newcommand\N{\mathbb{N}}
@@ -45,11 +46,24 @@
 \newcommand\Inj{\hookrightarrow}
 \newcommand\Surj{\twoheadrightarrow}
 \newcommand\Bij{\leftrightarrow}
-\DeclarePairedDelimiter\Card{\lvert}{\rvert}
+\DeclarePairedDelimiter\card{\lvert}{\rvert}
+\newcommand\Card{\card*}
+
+\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{\ifblank{#1}{}{\,\setargs{#1}\,}}
+\NewDocumentCommand{\setargs}{>{\SplitArgument{1}{|}}m}
+{\setargsaux#1}
+\NewDocumentCommand{\setargsaux}{mm}
+{\IfNoValueTF{#2}{#1} {#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}%
+\newcommand\Set{\set*}
 
 % ----------- Algebra ---------------
-\DeclarePairedDelimiter\Abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand\Abs{\abs*}
 \newcommand\Mul{\cdot}
+
+% ----------- Analysis --------------
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\newcommand\Norm{\norm*}
 
 % ------------ Logic ----------------
 % Quantifiers
