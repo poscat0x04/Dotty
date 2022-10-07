@@ -44,6 +44,15 @@
 % -------- Header and footer ----------
 \RequirePackage{fancyhdr}
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[RO]{.23\paperwidth}
+\renewcommand\headrulewidth{0pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}{}}
+\fancyhead[LO]{\textsc{\leftmark}}
+\fancyhead[RO]{\footnotesize \textit{\rightmark}~~~~ \thepage}
+
 % ----------- Indices -----------------
 \RequirePackage[quiet]{imakeidx} % TODO: switch to xindy when texpad adds support for it
 \indexsetup{firstpagestyle=fancy}
@@ -91,20 +100,32 @@
 \RequirePackage[%
   paperheight=297mm,
   paperwidth=223mm,
-  left = 0.1\paperwidth,
+  left = 0.09\paperwidth,
   bottom = 0.118\paperheight,
   top = 0.118\paperheight,
-  right = 0.269\paperwidth,
+  right = 0.3\paperwidth,
   footskip = 0.04\paperwidth,
   marginparwidth = 0.202\paperwidth,
   marginparsep = 0.02\paperwidth
 ]{geometry}
 
-\pagestyle{fancy}
-\fancyhf{}
-\cfoot{\thepage}
-\fancyhead[CO]{\titlename}
-\fancyhfoffset[RO]{.18\paperwidth}
+\fancypagestyle{fancypart}{%
+  \fancyhf{}%
+  \newlength{\myoddoffset}%
+  \setlength{\myoddoffset}{\marginparwidth + \marginparsep}%
+  \fancyfootoffset[rh]{\myoddoffset}%
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[L]{\footnotesize \thepage}%
+}%
+
+\usepackage{titlesec}
+\titleformat{\part}[hang]{{\thispagestyle{fancypart}}\Huge\bfseries}{\marginnote{%
+  \begin{tcolorbox}[width=\marginparwidth,height=\marginparwidth/2,colback=black!50!white,colframe=black!50!white,center title,fonttitle=\bfseries\normalsize,title=PART,text fill]
+    \begin{center}
+    {\color{white}\thepart}
+    \end{center}
+  \end{tcolorbox}
+}[-1.25in]}{0pt}{\Huge\bfseries\itshape}
 
 % ---------- Title page ---------------
 \let\oldmktitle\maketitle % TODO: switch to NewCommandCopy when texpad supports it
@@ -114,7 +135,9 @@
     margin=.11\paperwidth,
     bottom=0.118\paperheight
   }
+  \pagestyle{empty}
   \oldmktitle
+  \thispagestyle{empty}
   \tableofcontents
   \restoregeometry
   \end{titlepage}
@@ -128,8 +151,16 @@
   \RequirePackage{fontspec}
 
   %% roman and sans-serif font
-  \setmainfont{Linux Libertine}
-  \setsansfont{Linux Biolinum}
+  \setmainfont[%
+    %SmallCapsFont={Linux Libertine},
+    %SmallCapsFeatures={Letters=SmallCaps},
+    ItalicFont={Linux Libertine Italic},
+    BoldFont={Linux Libertine Bold}
+  ]{Linux Libertine}
+  \setsansfont[%
+    ItalicFont={Linux Biolinum Italic},
+    BoldFont={Linux Biolinum Bold},
+  ]{Linux Biolinum}
 
   %% monospaced font
   \setmonofont[Scale=0.92]{Sarasa Mono SC}
