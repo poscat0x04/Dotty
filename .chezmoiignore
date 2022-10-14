@@ -1,0 +1,8 @@
+{{- if eq .chezmoi.os "windows" }}
+.ghc
+.config/hi
+.zshrc
+.zshenv
+.zinputrc
+.local/share/zsh-extras
+{{- end }}
