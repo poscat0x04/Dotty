@@ -1,0 +1,12 @@
+[edit]
+command = "nvim"
+
+[merge]
+command = "nvim"
+args = [ "-d" ]
+
+[cd]
+{{- if eq .chezmoi.os "windows" }}
+command = "pwsh.exe"
+args = [ "-NoLogo" ]
+{{- end }}
