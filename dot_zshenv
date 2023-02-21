@@ -28,3 +28,12 @@ export VISUAL="code"
 
 # personal tex packages
 export TEXINPUTS=".:$HOME/.local/share/tex//:"
+
+# elan
+export PATH="$PATH:$HOME/.elan/bin"
+
+# rust
+if [[ -f "$HOME/.cargo/env" ]]
+then
+  source "$HOME/.cargo/env"
+fi
