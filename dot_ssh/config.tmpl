@@ -7,6 +7,9 @@ Host hyperion
 Host nuc
   HostName nuc.poscat.moe
 
+Host dione
+  HostName 10.1.10.4
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   UseKeychain yes
