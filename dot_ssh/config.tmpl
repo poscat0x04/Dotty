@@ -9,6 +9,7 @@ Host nuc
 
 Host dione
   HostName 10.1.10.4
+  ProxyJump titan
 
 Host *
   {{- if eq .chezmoi.os "darwin" }}
