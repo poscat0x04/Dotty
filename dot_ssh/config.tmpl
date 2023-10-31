@@ -19,6 +19,11 @@ Host dione
   ForwardX11 yes
   ForwardX11Trusted yes
 
+Host bwh
+  HostName 64.64.228.47
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   UseKeychain yes
