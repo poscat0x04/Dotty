@@ -123,7 +123,7 @@ format = """
 ([$renamed](cyan) )\
 ([$deleted](red) )\
 ([$modified](yellow) )\
-([$untracked](yellow) )\
+([$untracked](39) )\
 """
 ahead = "⇡$count"
 behind = "⇣$count"
