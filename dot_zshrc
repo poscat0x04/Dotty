@@ -142,7 +142,11 @@ autoload -U compinit && compinit -u
 if [[ "$OSTYPE" == "darwin"* ]]; then
   source /opt/homebrew/opt/zinit/zinit.zsh
 elif  [[ "$OSTYPE" == "linux"* ]]; then
-  source /usr/share/zinit/zinit.zsh
+  if [[ -f "/usr/share/zinit/zinit.zsh" ]] then
+    source /usr/share/zinit/zinit.zsh
+  else
+    source ~/.local/share/zinit/zinit.git/zinit.zsh
+  fi
 fi
 
 # opam
