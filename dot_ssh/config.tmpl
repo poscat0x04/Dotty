@@ -1,15 +1,23 @@
 Host titan
   HostName titan.poscat.moe
+  ForwardX11 yes
+  ForwardX11Trusted yes
 
 Host hyperion
   HostName hyperion.poscat.moe
+  ForwardX11 yes
+  ForwardX11Trusted yes
 
 Host nuc
   HostName nuc.poscat.moe
+  ForwardX11 yes
+  ForwardX11Trusted yes
 
 Host dione
   HostName 10.1.10.4
   ProxyJump titan
+  ForwardX11 yes
+  ForwardX11Trusted yes
 
 Host *
   {{- if eq .chezmoi.os "darwin" }}
