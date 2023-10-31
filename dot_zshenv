@@ -26,6 +26,9 @@ export OPAMROOT="$HOME/.local/share/opam"
 export EDITOR="nvim"
 export VISUAL="code"
 
+# LESS
+export LESS="-R"
+
 # personal tex packages
 export TEXINPUTS=".:$HOME/.local/share/tex//:"
 
