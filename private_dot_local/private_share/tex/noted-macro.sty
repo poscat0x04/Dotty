@@ -23,7 +23,9 @@
 \newcommand\CoveredBy{\sqsubset}
 \newcommand\Coveres{\sqsupset}
 \newcommand\JOIN{\bigvee}
+\newcommand\join{\vee}
 \newcommand\MEET{\bigwedge}
+\newcommand\meet{\wedge}
 \DeclareMathOperator\Down{\downarrow}
 \DeclareMathOperator\Downset{\mathcal{O}}
 \DeclareMathOperator\Downmap{\phi_{\downarrow}}
@@ -60,6 +62,15 @@
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \newcommand\Abs{\abs*}
 \newcommand\Mul{\cdot}
+\newcommand\dsum{\oplus}
+\newcommand\DSum{\bigoplus}
+\DeclareMathOperator\Ker{Ker}
+\DeclareMathOperator\Image{Im}
+\renewcommand\Im\Image
+
+% --------- Linear Algebra ----------
+\DeclareMathOperator\Span{span}
+\DeclareMathOperator\Dim{dim}
 
 % ----------- Analysis --------------
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -82,7 +93,6 @@
 \newcommand\IF{\impliedby}
 \newcommand\IMPLIEDBY{\impliedby}
 \newcommand\IFF{\iff}
-\newcommand\DEF{\coloneqq}
 \newcommand\LIMPL{\multimap}
 \newcommand\PAR{\,\rotatebox[origin=c]{180}{\&}\,}
 \newcommand\WITH{\,\&\,}
@@ -91,3 +101,7 @@
 % Constants
 \newcommand\BOT{\bot}
 \newcommand\TOP{\top}
+%% Meta-theoretic symbols
+\newcommand\Models{\vDash}
+\newcommand\Proves{\vdash}
+\newcommand\DEF{\coloneqq}

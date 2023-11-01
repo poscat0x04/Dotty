@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noted-fonts-libertine}
+
+% -------- Engine detection ----------
+\RequirePackage{iftex}
+\RequirePackage{iftexpadtex}
+
+% ------------- Fonts -----------------
+\ifPDFTeX
+  \RequirePackage{libertineRoman}
+  \RequirePackage{biolinum}
+\else
+  \RequirePackage{fontspec}
+
+  %% roman and sans-serif font
+  \iftexpadtex
+    \setmainfont[%
+      %SmallCapsFont={Linux Libertine},
+      SmallCapsFeatures={Letters=SmallCaps},
+      ItalicFont={Linux Libertine Italic},
+      BoldFont={Linux Libertine Bold}
+    ]{Linux Libertine}
+  \else
+    setmainfont[%
+      SmallCapsFont={Linux Libertine},
+      SmallCapsFeatures={Letters=SmallCaps},
+      ItalicFont={Linux Libertine Italic},
+      BoldFont={Linux Libertine Bold}
+    ]{Linux Libertine}
+  \fi
+  \setsansfont[%
+    ItalicFont={Linux Biolinum Italic},
+    BoldFont={Linux Biolinum Bold},
+  ]{Linux Biolinum}
+\fi
+
+%% normal math font (symbol + text)
+\RequirePackage[libertine]{newtxmath} % TODO: consider supporting STIX Two Math when texpad adds support for unicode-math

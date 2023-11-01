@@ -1,0 +1,400 @@
+% A package providing configurations that are independent from page layout.
+% Can be used in other classes, hence the name "common".
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noted-common}
+
+% -------- Options parsing -----------
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{prefix=ncommon@}
+\DeclareStringOption[]{title}
+\DeclareStringOption[]{author}
+\DeclareBoolOption{palatino}
+\DeclareBoolOption{consolas}
+\ProcessKeyvalOptions*
+
+% -------- Engine detection ----------
+\RequirePackage{iftex}
+\RequirePackage{iftexpadtex}
+
+% ------------ Math input -------------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+
+% -------- Theorems and proofs --------
+\RequirePackage{amsthm}
+
+% --------- Better colors -------------
+\RequirePackage[dvipsnames]{xcolor}
+
+% ----- Hyperlinks & PDF metadata -----
+\RequirePackage[
+  draft=false,
+  ocgcolorlinks,
+  backref,
+]{hyperref}
+\hypersetup{
+  colorlinks        = true,
+  linkcolor         = BrickRed,
+  linkbordercolor   = BrickRed,
+  citecolor         = Green,
+  citebordercolor   = Green,
+  filecolor         = Mulberry,
+  filebordercolor   = Mulberry,
+  urlcolor          = NavyBlue,
+  urlbordercolor    = NavyBlue,
+  menucolor         = BrickRed,
+  menubordercolor   = BrickRed,
+  runcolor          = Mulberry,
+  runbordercolor    = Mulberry,
+  bookmarksopen     = true,
+  CJKbookmarks      = true,
+  bookmarksnumbered = true,
+  % https://tex.stackexchange.com/questions/3450/make-pdf-open-in-fill-window-mode-with-hyperref
+  pdfstartview=,
+  pdftitle          = {\ncommon@title},
+  pdfauthor         = {\ncommon@author},
+  pdfpagemode       = FullScreen
+}
+
+% ----------- Indices -----------------
+\RequirePackage[quiet]{imakeidx} % TODO: switch to xindy when texpad adds support for it
+\indexsetup{firstpagestyle=fancy}
+\makeindex[title=Index,intoc=true]
+\newcommand\idx[1]{#1\index{#1}}
+
+% --------- Better marginpar ----------
+\RequirePackage{marginnote}
+
+% --------- Better listings -----------
+\RequirePackage{enumitem}
+
+% --------- ISO 8601 date -------------
+\RequirePackage[style=iso]{datetime2}
+
+% ------------ Fonts ------------------
+%% serif and sans-serif font
+\ifncommon@palatino
+  \RequirePackage{noted-fonts-palatino}
+\else
+  \RequirePackage{noted-fonts-libertine}
+\fi
+
+%% monospaced font
+\ifPDFTeX
+\else
+  \ifncommon@consolas
+    \setmonofont[Scale=0.92]{Consolas}
+  \else
+    \setmonofont[Scale=0.92]{Sarasa Mono SC}
+  \fi
+\fi
+
+%% math font variations
+%%
+%% mathbb: AMS
+%% mathcal: cmsy (Computer Modern Math Symbols)
+%% mathfrak: Euler fraktur
+%% mathscr: Ralph Smith's Formal Script
+\RequirePackage[%
+  bb=ams,
+  cal=cm,
+  frak=euler,
+  scr=rsfs
+]{mathalfa}
+
+% ---------- Chinese input ------------
+\ifXeTeX
+  \RequirePackage{xeCJK}
+
+  \setCJKmainfont[ItalicFont={KaiTi SC}]{Songti SC}
+  \setCJKsansfont{PingFang SC}
+  \ifnoted@consolas
+    \setCJKmonofont{Consolas}
+  \else
+    \setCJKmonofont{Sarasa Mono SC}
+  \fi
+  \newCJKfontfamily[song]\songti{Songti SC}
+  \newCJKfontfamily[kai]\kaiti{KaiTi SC}
+  \newCJKfontfamily[hei]\heiti{PingFang SC}
+\else\ifLuaTeX
+  \RequirePackage{luatexja}
+  \RequirePackage{luatexja-fontspec}
+
+  \setmainjfont{Songti SC}
+  \setsansjfont{PingFang SC}
+  \ifnoted@consolas
+    \setmonojfont{Consolas}
+  \else
+    \setmonojfont{Sarasa Mono SC}
+  \fi
+\fi\fi
+
+% ----------- microtype ---------------
+\RequirePackage[
+  activate=true,
+  tracking=true,
+]{microtype}
+
+% ---------- Colored boxes ------------
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{thmtools}
+
+\colorlet{DeepRed}{red!75!black}
+
+% common styles
+\tcbset{
+  box geometry/.style = {
+    boxsep = 5pt,
+    boxrule = 0pt,
+    leftrule = 1pt,
+    top = 3pt,
+    bottom = 3pt,
+    left = 5pt,
+    titlerule = 0pt,
+    bottomtitle = 0pt,
+    sharp corners,
+  },
+  titleless box geometry/.style = {
+    toprule = 0pt,
+    bottomrule = 0pt,
+    leftrule = 1pt,
+    rightrule = 0pt,
+    left = 5pt,
+    right = 5pt,
+    sharp corners,
+  },
+  title style/.style = {
+    fonttitle = \bfseries\sffamily,
+    separator sign = \textemdash,
+    terminator sign none,
+    description delimiters none,
+  },
+  lighter black theme/.style = {
+    colframe = black!40!white,
+    coltitle = black,
+    colbacktitle = black!13!white,
+    colback = black!3!white,
+  },
+  black theme/.style = {
+    colframe = black!50!white,
+    coltitle = black,
+    colbacktitle = black!20!white,
+    colback = black!5!white,
+  },
+  red theme/.style = {
+    colframe = DeepRed!55!White,
+    coltitle = DeepRed!90!Black,
+    colbacktitle = red!28!White,
+    colback = red!5!White,
+  },
+  purple theme/.style = {
+    colframe = Purple!55!White,
+    coltitle = Purple!90!Black,
+    colbacktitle = Purple!28!White,
+    colback = Purple!5!White,
+  },
+  blue theme/.style = {
+    colframe = Cerulean!60!White,
+    coltitle = Cerulean!80!Black,
+    colbacktitle = Cerulean!28!White,
+    colback = Cerulean!5!White,
+  },
+  green theme/.style = {
+    colframe = LimeGreen!70!White,
+    coltitle = LimeGreen!57!Black,
+    colbacktitle = LimeGreen!28!White,
+    colback = LimeGreen!6!White,
+  },
+  navy blue theme/.style = {
+    colframe = NavyBlue!60!White,
+    coltitle = NavyBlue!60!Black,
+    colbacktitle = NavyBlue!25!White,
+    colback = NavyBlue!6!White,
+  },
+  theorem like/.style = {
+    title style,
+    box geometry,
+  },
+  proof like/.style = {
+    breakable,
+    titleless box geometry,
+  },
+}
+
+% ------------ Definitions --------------
+\newtcbtheorem[
+  auto counter,
+  number within = subsection
+]
+{definition}{Definition}{
+  %breakable,
+  theorem like,
+  navy blue theme,
+}{def}
+
+% -------- Important definitions --------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{idefinition}{Definition}{
+  %breakable,
+  theorem like,
+  red theme,
+}{def}
+
+% ------------ Propositions -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{proposition}{Proposition}{
+  %breakable,
+  theorem like,
+  black theme,
+}{prop}
+
+% ------------ Properties -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{property}{Property}{
+  %breakable,
+  theorem like,
+  green theme,
+}{prop}
+
+% ------------ Lemmas -----------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{lemma}{Lemma}{
+  %breakable,
+  theorem like,
+  black theme,
+}{lem}
+
+% -------- Important Lemmas ------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{ilemma}{Lemma}{
+  %breakable,
+  theorem like,
+  red theme,
+}{lem}
+
+% ------------ Corollaries -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{corollary}{Corollary}{
+  %breakable,
+  theorem like,
+  black theme,
+}{cor}
+
+% -------- Important Corollaries --------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{icorollary}{Corollary}{
+  %breakable,
+  theorem like,
+  red theme,
+}{cor}
+
+% ------------ Theorems -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]{theorem}{Theorem}{
+  theorem like,
+  black theme,
+}{thm}
+
+% -------- Important Theorems --------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]{itheorem}{Theorem}{
+  theorem like,
+  red theme,
+}{thm}
+
+% ------------ Remarks -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]
+{remark}{Remark}{
+  %breakable,
+  theorem like,
+  purple theme,
+}{rmk}
+
+% ------------ Examples -------------
+\newtcbtheorem[
+  use counter from = definition,
+  number within = subsection
+]{example}{Example}{
+  theorem like,
+  blue theme,
+}{xmpl}
+
+% ------------ Proofs -------------
+\let\proof\relax
+\let\endproof\relax
+
+\declaretheoremstyle[
+  headfont={\itshape},
+  notefont={\normalfont},
+  bodyfont={\normalfont},
+  headpunct={.\ },
+  headformat={\NAME},
+]{proof}
+
+\declaretheorem[
+  style = proof,
+  qed = \qedsymbol,
+]{proof}
+
+\declaretheorem[
+  style = proof,
+  title = {Sketch of Proof},
+  qed = \qedsymbol,
+]{proofsketch}
+
+\tcolorboxenvironment{proof}{
+  proof like,
+  lighter black theme,
+}
+
+\tcolorboxenvironment{proofsketch}{
+  proof like,
+  lighter black theme,
+}
+
+% Testing
+\newtcbtheorem[
+  number within = section
+]{ntheorem}{Theorem}{
+    colback=Red!7,
+    colframe=Black!40!Red,
+    sharp corners,
+    theorem style = break,
+    fonttitle = \bfseries\sffamily,
+    coltitle = Black!40!Red,
+    separator sign dash,
+    terminator sign none,
+    description delimiters none,
+    boxrule = 1pt,
+    parbox = false,
+}{thm}

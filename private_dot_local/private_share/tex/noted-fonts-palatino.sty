@@ -1,0 +1,15 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noted-fonts-palatino}
+
+% -------- Engine detection ----------
+\RequirePackage{iftex}
+
+% ------------- Fonts -----------------
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+
+\ifPDFTeX
+  \RequirePackage[scaled=0.95]{helvet}
+\else
+  \RequirePackage{fontspec}
+\fi
