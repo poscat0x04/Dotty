@@ -10,6 +10,7 @@
 \DeclareStringOption[]{title}
 \DeclareBoolOption{intolerance}
 \DeclareBoolOption{consolas}
+\DeclareBoolOption[true]{palatino}
 \DeclareBoolOption{nomacro}
 \ProcessKeyvalOptions*
 
@@ -19,12 +20,18 @@
   \providecommand\useconsolas{false}
 \fi
 
+\ifnoted@palatino
+  \providecommand\usepalatino{true}
+\else
+  \providecommand\usepalatino{false}
+\fi
+
 % --------- Load Common --------------
 \RequirePackage[
   title = \noted@title,
   author = \noted@name,
   consolas = \useconsolas,
-  palatino,
+  palatino = \usepalatino,
 ]{noted-common}
 
 % -------- Title and author ----------

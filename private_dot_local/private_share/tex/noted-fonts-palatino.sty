@@ -15,31 +15,23 @@
   \RequirePackage{fontspec}
   \iftexpadtex
     \setmainfont[
-      %SmallCapsFont = Palatino,
-      SmallCapsFeatures = {Letters=SmallCaps},
       BoldFont = Palatino Bold,
       ItalicFont= Palatino Italic,
     ]{Palatino}
     \setsansfont[
-      %SmallCapsFont = Optima,
-      SmallCapsFeatures = {Letters=SmallCaps},
       BoldFont = Optima Bold,
       ItalicFont= Optima Italic,
     ]{Optima}
 
     \RequirePackage{newpxmath}
   \else
-    \setmainfont[
-      SmallCapsFont = Palatino,
-      SmallCapsFeatures = {Letters=SmallCaps},
-      BoldFont = Palatino Bold,
-      ItalicFont= Palatino Italic,
-    ]{Palatino}
-    \setsansfont[
-      SmallCapsFont = Optima,
-      SmallCapsFeatures = {Letters=SmallCaps},
-      BoldFont = Optima Bold,
-      ItalicFont= Optima Italic,
-    ]{Optima}
+    \RequirePackage{newpxtext}
+    \RequirePackage{newpxmath}
+    % https://tex.stackexchange.com/questions/640390/newtx-conflicts-with-fontspec-in-tex-live-2022
+    \defaultfontfeatures{}
+
+    \setsansfont{Optima}
   \fi
 \fi
+
+\linespread{1.05}
