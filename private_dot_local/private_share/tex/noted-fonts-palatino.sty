@@ -5,13 +5,41 @@
 \RequirePackage{iftex}
 
 % ------------- Fonts -----------------
-\RequirePackage{newpxtext}
-\RequirePackage{newpxmath}
 
 
 \ifPDFTeX
+  \RequirePackage{newpxtext}
+  \RequirePackage{newpxmath}
   \RequirePackage[scaled=0.95]{helvet}
 \else
   \RequirePackage{fontspec}
-  \setsansfont{Optima}
+  \iftexpadtex
+    \setmainfont[
+      %SmallCapsFont = Palatino,
+      SmallCapsFeatures = {Letters=SmallCaps},
+      BoldFont = Palatino Bold,
+      ItalicFont= Palatino Italic,
+    ]{Palatino}
+    \setsansfont[
+      %SmallCapsFont = Optima,
+      SmallCapsFeatures = {Letters=SmallCaps},
+      BoldFont = Optima Bold,
+      ItalicFont= Optima Italic,
+    ]{Optima}
+
+    \RequirePackage{newpxmath}
+  \else
+    \setmainfont[
+      SmallCapsFont = Palatino,
+      SmallCapsFeatures = {Letters=SmallCaps},
+      BoldFont = Palatino Bold,
+      ItalicFont= Palatino Italic,
+    ]{Palatino}
+    \setsansfont[
+      SmallCapsFont = Optima,
+      SmallCapsFeatures = {Letters=SmallCaps},
+      BoldFont = Optima Bold,
+      ItalicFont= Optima Italic,
+    ]{Optima}
+  \fi
 \fi
