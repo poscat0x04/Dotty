@@ -33,7 +33,9 @@ $java\
 $julia\
 $kotlin\
 $lua\
+$meson\
 $nim\
+$nix_shell\
 $nodejs\
 $ocaml\
 $perl\
