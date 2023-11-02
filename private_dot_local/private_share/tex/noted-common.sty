@@ -28,38 +28,12 @@
 % --------- Better colors -------------
 \RequirePackage[dvipsnames]{xcolor}
 
-% ----- Hyperlinks & PDF metadata -----
-\RequirePackage[
-  draft=false,
-  ocgcolorlinks,
-  backref,
-]{hyperref}
-\hypersetup{
-  colorlinks        = true,
-  linkcolor         = BrickRed,
-  linkbordercolor   = BrickRed,
-  citecolor         = Green,
-  citebordercolor   = Green,
-  filecolor         = Mulberry,
-  filebordercolor   = Mulberry,
-  urlcolor          = NavyBlue,
-  urlbordercolor    = NavyBlue,
-  menucolor         = BrickRed,
-  menubordercolor   = BrickRed,
-  runcolor          = Mulberry,
-  runbordercolor    = Mulberry,
-  bookmarksopen     = true,
-  CJKbookmarks      = true,
-  bookmarksnumbered = true,
-  % https://tex.stackexchange.com/questions/3450/make-pdf-open-in-fill-window-mode-with-hyperref
-  pdfstartview=,
-  pdftitle          = {\ncommon@title},
-  pdfauthor         = {\ncommon@author},
-  pdfpagemode       = FullScreen
-}
-
 % ----------- Indices -----------------
-\RequirePackage[quiet]{imakeidx} % TODO: switch to xindy when texpad adds support for it
+\iftexpadtex
+  \RequirePackage[quiet]{imakeidx} % TODO: switch to xindy when texpad adds support for it
+\else
+  \RequirePackage[xindy,quiet]{imakeidx}
+\fi
 \indexsetup{firstpagestyle=fancy}
 \makeindex[title=Index,intoc=true]
 \newcommand\idx[1]{#1\index{#1}}
@@ -137,6 +111,36 @@
     tracking=true,
   ]{microtype}
 \fi
+
+% ----- Hyperlinks & PDF metadata -----
+\RequirePackage[
+  draft=false,
+  ocgcolorlinks,
+  backref,
+]{hyperref}
+\hypersetup{
+  colorlinks        = true,
+  linkcolor         = BrickRed,
+  linkbordercolor   = BrickRed,
+  citecolor         = Green,
+  citebordercolor   = Green,
+  filecolor         = Mulberry,
+  filebordercolor   = Mulberry,
+  urlcolor          = NavyBlue,
+  urlbordercolor    = NavyBlue,
+  menucolor         = BrickRed,
+  menubordercolor   = BrickRed,
+  runcolor          = Mulberry,
+  runbordercolor    = Mulberry,
+  bookmarksopen     = true,
+  CJKbookmarks      = true,
+  bookmarksnumbered = true,
+  % https://tex.stackexchange.com/questions/3450/make-pdf-open-in-fill-window-mode-with-hyperref
+  pdfstartview=,
+  pdftitle          = {\ncommon@title},
+  pdfauthor         = {\ncommon@author},
+  pdfpagemode       = FullScreen
+}
 
 % ---------- Colored boxes ------------
 \RequirePackage[many]{tcolorbox}
