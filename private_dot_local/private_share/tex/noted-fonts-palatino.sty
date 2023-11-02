@@ -11,9 +11,22 @@
   \RequirePackage{newpxtext}
   \RequirePackage{newpxmath}
   \RequirePackage[scaled=0.95]{helvet}
+
+  %% math font variations
+  %%
+  %% mathbb: AMS
+  %% mathcal: cmsy (Computer Modern Math Symbols)
+  %% mathfrak: Euler fraktur
+  %% mathscr: Ralph Smith's Formal Script
+  \RequirePackage[%
+    bb=ams,
+    cal=cm,
+    frak=euler,
+    scr=rsfs
+  ]{mathalfa}
 \else
-  \RequirePackage{fontspec}
   \iftexpadtex
+    \RequirePackage{fontspec}
     \setmainfont[
       BoldFont = Palatino Bold,
       ItalicFont= Palatino Italic,
@@ -24,13 +37,28 @@
     ]{Optima}
 
     \RequirePackage{newpxmath}
+
+    %% math font variations
+    %%
+    %% mathbb: AMS
+    %% mathcal: cmsy (Computer Modern Math Symbols)
+    %% mathfrak: Euler fraktur
+    %% mathscr: Ralph Smith's Formal Script
+    \RequirePackage[%
+      bb=ams,
+      cal=cm,
+      frak=euler,
+      scr=rsfs
+    ]{mathalfa}
   \else
     \RequirePackage{newpxtext}
-    \RequirePackage{newpxmath}
     % https://tex.stackexchange.com/questions/640390/newtx-conflicts-with-fontspec-in-tex-live-2022
     \defaultfontfeatures{}
 
+    \RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
     \setsansfont{Optima}
+    \setmathfont{STIX Two Math}
+    \setoperatorfont{}
   \fi
 \fi
 

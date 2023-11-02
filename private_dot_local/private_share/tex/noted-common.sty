@@ -74,6 +74,7 @@
 \RequirePackage[style=iso]{datetime2}
 
 % ------------ Fonts ------------------
+\RequirePackage{amsfonts}
 %% serif and sans-serif font
 \ifncommon@palatino
   \RequirePackage{noted-fonts-palatino}
@@ -91,24 +92,11 @@
   \fi
 \fi
 
-%% math font variations
-%%
-%% mathbb: AMS
-%% mathcal: cmsy (Computer Modern Math Symbols)
-%% mathfrak: Euler fraktur
-%% mathscr: Ralph Smith's Formal Script
-\RequirePackage[%
-  bb=ams,
-  cal=cm,
-  frak=euler,
-  scr=rsfs
-]{mathalfa}
-
 % ---------- Chinese input ------------
 \ifXeTeX
   \RequirePackage{xeCJK}
 
-  \setCJKmainfont[ItalicFont={KaiTi SC}]{Songti SC}
+  \setCJKmainfont[ItalicFont={Kaiti SC}]{Songti SC}
   \setCJKsansfont{PingFang SC}
   \ifnoted@consolas
     \setCJKmonofont{Consolas}
@@ -116,7 +104,7 @@
     \setCJKmonofont{Sarasa Mono SC}
   \fi
   \newCJKfontfamily[song]\songti{Songti SC}
-  \newCJKfontfamily[kai]\kaiti{KaiTi SC}
+  \newCJKfontfamily[kai]\kaiti{Kaiti SC}
   \newCJKfontfamily[hei]\heiti{PingFang SC}
 \else\ifLuaTeX
   \RequirePackage{luatexja}
@@ -132,10 +120,14 @@
 \fi\fi
 
 % ----------- microtype ---------------
-\RequirePackage[
-  activate=true,
-  tracking=true,
-]{microtype}
+\ifXeTeX
+  \RequirePackage{microtype}
+\else
+  \RequirePackage[
+    activate=true,
+    tracking=true,
+  ]{microtype}
+\fi
 
 % ---------- Colored boxes ------------
 \RequirePackage[many]{tcolorbox}

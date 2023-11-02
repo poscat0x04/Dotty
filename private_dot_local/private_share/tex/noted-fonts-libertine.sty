@@ -5,15 +5,54 @@
 \RequirePackage{iftex}
 \RequirePackage{iftexpadtex}
 
+% ---------------- Math fonts --------------
+\iftexpadtex
+  %% normal math font (symbol + text)
+  \RequirePackage[libertine]{newtxmath} % TODO: consider supporting STIX Two Math when texpad adds support for unicode-math
+
+  %% math font variations
+  %%
+  %% mathbb: AMS
+  %% mathcal: cmsy (Computer Modern Math Symbols)
+  %% mathfrak: Euler fraktur
+  %% mathscr: Ralph Smith's Formal Script
+  \RequirePackage[%
+    bb=ams,
+    cal=cm,
+    frak=euler,
+    scr=rsfs
+  ]{mathalfa}
+\else
+  \ifPDFTeX
+    %% normal math font (symbol + text)
+    \RequirePackage[libertine]{newtxmath}
+
+    %% math font variations
+    %%
+    %% mathbb: AMS
+    %% mathcal: cmsy (Computer Modern Math Symbols)
+    %% mathfrak: Euler fraktur
+    %% mathscr: Ralph Smith's Formal Script
+    \RequirePackage[%
+      bb=ams,
+      cal=cm,
+      frak=euler,
+      scr=rsfs
+    ]{mathalfa}
+  \else
+    \RequirePackage{unicode-math}
+    \setmathfont{STIX Two Math}
+  \fi
+\fi
+
 % ------------- Fonts -----------------
 \ifPDFTeX
   \RequirePackage{libertineRoman}
   \RequirePackage{biolinum}
 \else
-  \RequirePackage{fontspec}
-
   %% roman and sans-serif font
   \iftexpadtex
+    \RequirePackage{fontspec}
     \setmainfont[%
       %SmallCapsFont={Linux Libertine},
       SmallCapsFeatures={Letters=SmallCaps},
@@ -38,5 +77,3 @@
   \fi
 \fi
 
-%% normal math font (symbol + text)
-\RequirePackage[libertine]{newtxmath} % TODO: consider supporting STIX Two Math when texpad adds support for unicode-math
