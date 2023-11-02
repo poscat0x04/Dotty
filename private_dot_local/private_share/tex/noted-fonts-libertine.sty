@@ -7,8 +7,19 @@
 
 % ---------------- Math fonts --------------
 \iftexpadtex
+\else
+  \ifPDFTeX
+  \else
+  \fi
+\fi
+
+% ------------- Fonts -----------------
+\ifPDFTeX
+  \RequirePackage{libertineRoman}
+  \RequirePackage{biolinum}
+
   %% normal math font (symbol + text)
-  \RequirePackage[libertine]{newtxmath} % TODO: consider supporting STIX Two Math when texpad adds support for unicode-math
+  \RequirePackage[libertine]{newtxmath}
 
   %% math font variations
   %%
@@ -23,39 +34,12 @@
     scr=rsfs
   ]{mathalfa}
 \else
-  \ifPDFTeX
-    %% normal math font (symbol + text)
-    \RequirePackage[libertine]{newtxmath}
-
-    %% math font variations
-    %%
-    %% mathbb: AMS
-    %% mathcal: cmsy (Computer Modern Math Symbols)
-    %% mathfrak: Euler fraktur
-    %% mathscr: Ralph Smith's Formal Script
-    \RequirePackage[%
-      bb=ams,
-      cal=cm,
-      frak=euler,
-      scr=rsfs
-    ]{mathalfa}
-  \else
-    \RequirePackage{unicode-math}
-    \setmathfont{STIX Two Math}
-  \fi
-\fi
-
-% ------------- Fonts -----------------
-\ifPDFTeX
-  \RequirePackage{libertineRoman}
-  \RequirePackage{biolinum}
-\else
   %% roman and sans-serif font
   \iftexpadtex
-    \RequirePackage{fontspec}
+    \RequirePackage[no-math]{fontspec}
+
     \setmainfont[%
-      %SmallCapsFont={Linux Libertine},
-      SmallCapsFeatures={Letters=SmallCaps},
+      SmallCapsFont={Linux Libertine Capitals},
       ItalicFont={Linux Libertine Italic},
       BoldFont={Linux Libertine Bold}
     ]{Linux Libertine}
@@ -63,7 +47,11 @@
       ItalicFont={Linux Biolinum Italic},
       BoldFont={Linux Biolinum Bold},
     ]{Linux Biolinum}
+
+    \RequirePackage[notext,not1]{stix}
   \else
+    \RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+
     \setmainfont[%
       SmallCapsFont={Linux Libertine O},
       SmallCapsFeatures={Letters=SmallCaps},
@@ -74,6 +62,9 @@
       ItalicFont={Linux Biolinum O Italic},
       BoldFont={Linux Biolinum O Bold},
     ]{Linux Biolinum O}
+
+    \setmathfont{STIX Two Math}
+    \setoperatorfont{}
   \fi
 \fi
 

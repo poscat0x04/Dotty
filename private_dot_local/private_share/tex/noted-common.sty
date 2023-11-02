@@ -74,7 +74,6 @@
 \RequirePackage[style=iso]{datetime2}
 
 % ------------ Fonts ------------------
-\RequirePackage{amsfonts}
 %% serif and sans-serif font
 \ifncommon@palatino
   \RequirePackage{noted-fonts-palatino}
@@ -86,9 +85,19 @@
 \ifPDFTeX
 \else
   \ifncommon@consolas
-    \setmonofont[Scale=0.92]{Consolas}
+    \setmonofont[
+      Scale = 0.92,
+      BoldFont = Consolas Bold,
+      ItalicFont = Consolas Italic,
+      BoldItalicFont = Consolas Bold Italic,
+    ]{Consolas}
   \else
-    \setmonofont[Scale=0.92]{Sarasa Mono SC}
+    \setmonofont[
+      Scale = 0.92,
+      BoldFont = Sarasa Mono Slab SC Semibold,
+      ItalicFont = Sarasa Mono Slab SC Light Italic,
+      BoldItalicFont = Sarasa Mono Slab SC Semibold Italic,
+    ]{Sarasa Mono Slab SC Light}
   \fi
 \fi
 
@@ -101,7 +110,7 @@
   \ifnoted@consolas
     \setCJKmonofont{Consolas}
   \else
-    \setCJKmonofont{Sarasa Mono SC}
+    \setCJKmonofont{Sarasa Mono SC Light}
   \fi
   \newCJKfontfamily[song]\songti{Songti SC}
   \newCJKfontfamily[kai]\kaiti{Kaiti SC}

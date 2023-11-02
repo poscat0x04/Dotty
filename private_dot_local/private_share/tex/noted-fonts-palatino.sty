@@ -9,8 +9,9 @@
 
 \ifPDFTeX
   \RequirePackage{newpxtext}
-  \RequirePackage{newpxmath}
   \RequirePackage[scaled=0.95]{helvet}
+
+  \RequirePackage{newpxmath}
 
   %% math font variations
   %%
@@ -26,30 +27,19 @@
   ]{mathalfa}
 \else
   \iftexpadtex
-    \RequirePackage{fontspec}
+    \RequirePackage[no-math]{fontspec}
+
     \setmainfont[
+      SmallCapsFont = Palatino Small Caps,
       BoldFont = Palatino Bold,
-      ItalicFont= Palatino Italic,
+      ItalicFont = Palatino Italic,
     ]{Palatino}
     \setsansfont[
       BoldFont = Optima Bold,
       ItalicFont= Optima Italic,
     ]{Optima}
 
-    \RequirePackage{newpxmath}
-
-    %% math font variations
-    %%
-    %% mathbb: AMS
-    %% mathcal: cmsy (Computer Modern Math Symbols)
-    %% mathfrak: Euler fraktur
-    %% mathscr: Ralph Smith's Formal Script
-    \RequirePackage[%
-      bb=ams,
-      cal=cm,
-      frak=euler,
-      scr=rsfs
-    ]{mathalfa}
+    \RequirePackage[notext,not1]{stix}
   \else
     \RequirePackage{newpxtext}
     % https://tex.stackexchange.com/questions/640390/newtx-conflicts-with-fontspec-in-tex-live-2022
