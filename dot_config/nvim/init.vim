@@ -22,22 +22,15 @@ augroup remember_folds
 augroup END
 
 syntax on
-let g:nord_cursor_line_number_background = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
 
-augroup nord-overrides
-  autocmd!
-  autocmd ColorScheme nord highlight Comment ctermfg=14
-  autocmd ColorScheme nord highlight Folded ctermfg=12 cterm=NONE guifg=#586885
-  autocmd ColorScheme nord highlight helpHyperTextJump guisp=#88C0D0
-augroup END
-colorscheme nord
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'onehalfdark',
   \ }
 
 imap <S-Insert> <C-R>*

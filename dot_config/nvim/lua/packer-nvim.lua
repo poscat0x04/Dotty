@@ -13,10 +13,17 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'arcticicestudio/nord-vim'
   use 'itchyny/lightline.vim'
   use 'ntpeters/vim-better-whitespace'
   use 'preservim/nerdtree'
+  use {
+    'sonph/onehalf',
+    rtp = 'vim',
+    config = function()
+      vim.cmd [[colorscheme onehalflight]]
+    end,
+    event = 'VimEnter',
+  }
 
   if packer_bootstrap then
     require('packer').sync()
