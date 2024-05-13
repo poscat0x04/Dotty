@@ -24,7 +24,7 @@ export OPAMROOT="$HOME/.local/share/opam"
 
 # set editors
 export EDITOR="nvim"
-export VISUAL="code"
+export VISUAL="neovide --no-fork"
 
 # LESS
 export LESS="-R"
