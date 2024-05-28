@@ -33,7 +33,7 @@ setopt auto_param_slash
 
 setopt correct
 
-setopt bang_hist
+unsetopt bang_hist
 setopt extended_history
 setopt share_history
 setopt hist_expire_dups_first
@@ -74,7 +74,8 @@ alias rsync='noglob rsync'
 alias scp='noglob scp'
 alias sftp='noglob sftp'
 alias diffu='diff --unified'
-alias _='sudo'
+alias !!='sudo'
+alias cm='chezmoi'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 alias grep="${aliases[grep]:-grep} --color=auto"
@@ -88,7 +89,9 @@ alias ls="${aliases[ls]:-ls} --color=auto"
 alias cb='cabal build --ghc-options='\''-Wall -fno-warn-unused-do-bind'\'''
 alias ct='cabal new-test --test-show-details=streaming --disable-documentation'
 alias df='df -kh'
+alias dnf='dnf5 -C'
 alias du='du -kh'
+alias free='free -h'
 alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 alias history-stat='history 0 | awk '\''{print $2}'\'' | sort | uniq -c | sort -n -r | head'
 alias l='ls -1A'
@@ -101,6 +104,7 @@ alias lr='ll -R'
 alias lt='ll -tr'
 alias lu='lt -u'
 alias lx='ll -XB'
+alias mb='mock -N -r ~/.config/mock/default.cfg *.src.rpm'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias o='open'
@@ -109,6 +113,7 @@ else
 fi
 alias pb='curl -F '\''c=@-'\'' '\''https://fars.ee/'\'''
 alias sl='ls'
+alias tree='tree -C'
 
 
 # coreutils (macOS)
@@ -133,7 +138,7 @@ source ~/.local/share/zsh-extras/terminal.zsh
 
 # load my functions
 fpath=($HOME/.local/share/zsh-extras/functions $fpath)
-autoload -U archive lsarchive unarchive
+autoload -U archive lsarchive unarchive fwhich
 
 # enable completion
 autoload -U compinit && compinit -u
