@@ -5,7 +5,14 @@
 	gpgSign = true
 
 [core]
+        pager = "delta"
 	editor = "nvim"
+
+[interactive]
+        diffFilter = "delta --color-only"
+
+[delta]
+        navigate = true
 
 [filter "lfs"]
 	clean = "git-lfs clean -- %f"
@@ -25,6 +32,9 @@
 [merge]
 	conflictstyle = "diff3"
 	tool = "nvimdiff"
+
+[diff]
+        colorMoved = "default"
 
 [mergetool]
 	prompt = false
