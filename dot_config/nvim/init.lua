@@ -12,6 +12,8 @@ vim.opt.mouse = 'a'
 vim.wo.number = true
 vim.opt.showcmd = true
 vim.opt.showmode = true
+vim.opt.showmatch = true
+vim.opt.updatetime = 1000
 vim.opt.backup = false
 vim.opt.writebackup = false
 if vim.fn.has('unix') then
@@ -19,6 +21,10 @@ if vim.fn.has('unix') then
 else
   vim.opt.shell = 'pwsh.exe'
 end
+
+-- use treesitter for folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- popup maxmium size
 vim.opt.pumheight = 15
@@ -85,6 +91,7 @@ vim.diagnostic.config(
 vim.cmd.syntax('enable')
 
 -- disable providers
+vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0

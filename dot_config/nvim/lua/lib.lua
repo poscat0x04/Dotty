@@ -8,16 +8,18 @@ mylib =
       end
     end
   end
-, onehalfdark =
+, onehalflight =
   {
   }
 }
 
 local colors =
-{ mono0 = '#282c34'
-, mono1 = '#313640'
-, mono2 = '#5d677a'
-, mono3 = '#dcdfe4'
+{ blackgray = '#282c34'
+, bluegray = '#828c99'
+, lightbluegray = '#5d677a'
+, lightlightbluegray = '#dcdfe4'
+, lightgray = '#d3d3d3'
+, white = '#f3f3f3'
 , yellow = '#e5c07b'
 , red = '#e06c75'
 , magenta = '#c678dd'
@@ -26,95 +28,67 @@ local colors =
 , green = '#98c379'
 }
 
--- mix color
-local function mix(a, b)
-  local a1 = tonumber(string.sub(a,2,3),16)
-  local a2 = tonumber(string.sub(a,4,5),16)
-  local a3 = tonumber(string.sub(a,6,7),16)
-  local b1 = tonumber(string.sub(b,2,3),16)
-  local b2 = tonumber(string.sub(b,4,5),16)
-  local b3 = tonumber(string.sub(b,6,7),16)
-  return table.concat(
-  { '#'
-  , string.format('%x', math.floor((a1 + b1)/2))
-  , string.format('%x', math.floor((a2 + b2)/2))
-  , string.format('%x', math.floor((a3 + b3)/2))
-  })
-end
-
-mylib.onehalfdark.normal =
+mylib.onehalflight.normal =
 { a =
-  { fg = colors.mono0
+  { fg = colors.blackgray
   , bg = colors.green
   }
 , b =
-  { fg = colors.mono3
-  , bg = colors.mono2
+  { fg = colors.lightbluegray
+  , bg = colors.lightgray
   }
 , c =
-  { fg = colors.green
-  , bg = colors.mono1
+  { fg = colors.bluegray
+  , bg = colors.white
   }
 }
 
-mylib.onehalfdark.insert =
+mylib.onehalflight.insert =
 { a =
-  { fg = colors.mono0
+  { fg = colors.blackgray
   , bg = colors.blue
   }
 , b =
-  { fg = colors.mono3
-  , bg = colors.mono2
-  }
-, c =
-  { fg = colors.blue
-  , bg = colors.mono1
+  { fg = colors.lightbluegray
+  , bg = colors.lightgray
   }
 }
 
-mylib.onehalfdark.visual =
+mylib.onehalflight.visual =
 { a =
-  { fg = colors.mono0
+  { fg = colors.blackgray
   , bg = colors.yellow
   }
 , b =
-  { fg = colors.mono3
-  , bg = colors.mono2
-  }
-, c =
-  { fg = colors.yellow
-  , bg = colors.mono1
+  { fg = colors.lightbluegray
+  , bg = colors.lightgray
   }
 }
 
-mylib.onehalfdark.replace =
+mylib.onehalflight.replace =
 { a =
-  { fg = colors.mono0
+  { fg = colors.blackgray
   , bg = colors.red
   }
 , b =
-  { fg = colors.mono3
-  , bg = colors.mono2
-  }
-, c =
-  { fg = colors.red
-  , bg = colors.mono1
+  { fg = colors.lightbluegray
+  , bg = colors.lightgray
   }
 }
 
-mylib.onehalfdark.command = mylib.onehalfdark.normal
+mylib.onehalflight.command = mylib.onehalflight.normal
 
-mylib.onehalfdark.inactive =
+mylib.onehalflight.inactive =
 { a =
-  { fg = colors.mono3
-  , bg = colors.mono2
+  { fg = colors.lightlightbluegray
+  , bg = colors.lightbluegray
   }
 , b =
-  { fg = colors.mono3
-  , bg = colors.mono2
+  { fg = colors.lightbluegray
+  , bg = colors.lightgray
   }
 , c =
-  { fg = colors.mono3
-  , bg = colors.mono1
+  { fg = colors.bluegray
+  , bg = colors.white
   }
 }

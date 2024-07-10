@@ -4,7 +4,7 @@ return
 , lazy = false
 , opts =
   { options =
-    { theme = mylib.onehalfdark
+    { theme = mylib.onehalflight
     , component_separators = '|'
     , section_separators = ''
     , disabled_filetypes =

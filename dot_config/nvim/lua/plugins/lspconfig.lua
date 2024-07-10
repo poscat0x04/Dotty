@@ -17,5 +17,15 @@ return
     lspconfig.typst_lsp.setup {
       capabilities = capabilities
     }
+    lspconfig.dhall_lsp_server.setup {
+      capabilities = capabilities
+    }
+    lspconfig.hls.setup {
+      capabilities = capabilities,
+      filetypes = {'haskell', 'lhaskell', 'cabal'}
+    }
+    lspconfig.clangd.setup {
+      capabilities = capabilities
+    }
   end
 }

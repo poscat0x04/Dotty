@@ -24,6 +24,7 @@ return
           , path = '[path]'
           , luasnip = '[snip]'
           , cmdline = '[cmd]'
+          , copilot = '[copilot]'
           }
         })
       }
@@ -35,6 +36,7 @@ return
         }
       , sources = cmp.config.sources
         ( { { name = 'nvim_lsp' }
+          , { name = 'copilot' }
           , { name = 'path' }
           }
         , { { name = 'buffer', keyword_length = 4 } }
