@@ -29,6 +29,9 @@
 [mergetool]
 	prompt = false
 
+[push]
+	autoSetupRemote = true
+
 [pull]
 	ff = true
 
