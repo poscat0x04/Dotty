@@ -24,6 +24,13 @@ Host bwh
   ForwardX11 yes
   ForwardX11Trusted yes
 
+Host vlab
+  HostName vlab.ustc.edu.cn
+  User vlab
+  IdentityFile ~/.ssh/vlab-vm9612.pem
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   UseKeychain yes
