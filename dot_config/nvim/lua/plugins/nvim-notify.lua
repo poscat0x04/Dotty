@@ -37,7 +37,7 @@ return
     , timeout = 7000
     , top_down = false
     , render = 'wrapped-compact'
-    , max_width = vim.o.columns * 0.3
+    , max_width = math.floor(vim.o.columns * 0.3)
     })
     vim.notify = require('notify')
   end
