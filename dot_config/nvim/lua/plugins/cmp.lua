@@ -34,8 +34,8 @@ return
             require('luasnip').lsp_expand(args.body)
           end
         }
-      , sources = cmp.config.sources
-        ( { { name = 'nvim_lsp' }
+      , sources = cmp.config.sources(
+          { { name = 'nvim_lsp' }
           , { name = 'copilot' }
           , { name = 'path' }
           }
@@ -93,8 +93,8 @@ return
 
     cmp.setup.cmdline(':'
     , { mapping = cmp.mapping.preset.cmdline()
-      , sources = cmp.config.sources
-        ( {{name = 'path'}}
+      , sources = cmp.config.sources(
+          {{name = 'path'}}
         , {{name = 'cmdline'}}
         )
       , view =
