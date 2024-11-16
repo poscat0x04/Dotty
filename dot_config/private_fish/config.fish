@@ -28,6 +28,12 @@ if status is-interactive
     alias lx='ll -XB'
     alias tree='tree -C'
 
+    alias popd='prevd'
+
+    if test -x $(which kitten)
+        alias ssh='kitten ssh'
+    end
+
     function fish_title
         set -q argv[1]; or set argv fish
         # Looks like ~/d/fish: git log
