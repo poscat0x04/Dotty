@@ -11,4 +11,6 @@ args = [ "-d" ]
 {{- if eq .chezmoi.os "windows" }}
 command = "pwsh.exe"
 args = [ "-NoLogo" ]
+{{- else }}
+command = "fish"
 {{- end }}
