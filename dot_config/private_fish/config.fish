@@ -41,6 +41,12 @@ if status is-interactive
         echo (fish_prompt_pwd_dir_length=1 prompt_pwd) : $argv;
     end
 
+    # sync history
+    function sync_history --on-event fish_postexec
+        history merge
+        history save
+    end
+
     if test -e ~/Xilinx/Vivado/2024.1/settings64.sh
         bass source ~/Xilinx/Vivado/2024.1/settings64.sh
     end
