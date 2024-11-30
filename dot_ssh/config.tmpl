@@ -33,6 +33,14 @@ Host vlab
   ForwardX11 yes
   ForwardX11Trusted yes
 
+Host archcn
+  HostName build.archlinuxcn.org
+
+Host claw
+  HostName 8.211.130.237
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   UseKeychain yes
