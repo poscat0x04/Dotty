@@ -35,7 +35,7 @@ if status is-interactive
 
     abbr -a cm 'chezmoi'
 
-    if test -x $(which kitten); and test -n $KITTY_WINDOW_ID
+    if type -q kitten ; and test -n $KITTY_WINDOW_ID
         alias ssh 'kitten ssh'
     end
 end
