@@ -1,6 +1,9 @@
 if status is-interactive
     alias grep 'grep --color=always'
     alias rg 'rg --color=always'
+    alias ip 'ip --color=auto'
+    alias bridge 'bridge --color=auto'
+    alias tc 'tc -color=auto'
     alias mkdir 'mkdir -p'
     alias rm 'rm -i'
     alias mv 'mv -i'
@@ -27,6 +30,8 @@ if status is-interactive
     abbr -a popd 'prevd'
     abbr -a unset 'set --erase'
     abbr -a which 'type'
+
+    abbr -a pb 'curl --data-binary @- https://pb.nichi.co'
 
     abbr -a cm 'chezmoi'
 
