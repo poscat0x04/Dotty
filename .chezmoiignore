@@ -6,4 +6,7 @@
 .zinputrc
 .local/share/zsh-extras
 {{- end }}
+{{- if eq .chezmoi.osRelease.id "arch" }}
+.config/fish
+{{- end }}
 files
