@@ -8,5 +8,6 @@
 {{- end }}
 {{- if eq .chezmoi.osRelease.id "arch" }}
 .config/fish
+.ssh/config
 {{- end }}
 files
