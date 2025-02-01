@@ -1,0 +1,17 @@
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile ~/.cache/msmtp.log
+
+account outlook
+host smtp-mail.outlook.com
+port 587
+tls_starttls on
+from poscat0x04@outlook.com
+from_full_name poscat <poscat0x04@outlook.com>
+user poscat0x04@outlook.com
+auth xoauth2
+passwordeval oama access poscat0x04@outlook.com
+
+account default: outlook
